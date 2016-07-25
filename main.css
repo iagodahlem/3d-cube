@@ -18,44 +18,57 @@
 
 /* Demo page
  * ---------------------------------- */
-.header {  }
-.title {  }
-.footer {  }
+.header {
+
+}
+.title {
+	text-align: center;
+}
+.footer {
+
+}
 
 /* Cube
  * ---------------------------------- */
 .scene {
 	width: 300px;
 	height: 300px;
-	margin: 50px auto 0;
+	margin: 120px auto 0;
+
+	/* const perspective = dimension * 4; */
 	perspective: 1200px;
 }
 .cube {
 	position: relative;
-	width: 200px;
-	height: 200px;
+	width: 300px;
+	height: 300px;
 	transform-style: preserve-3d;
+	transform: rotateX(0deg) rotateY(0deg);
+	transition: all .2s ease-in-out;
 }
 .side {
 	position: absolute;
-	width: 200px;
-	height: 200px;
-}
-.side--back {
-	transform: translateZ(-100px);
-}
-.side--left {
-	transform: translateX(-100px) rotateY(90deg);
-}
-.side--right {
-	transform: translateX(100px) rotateY(90deg);
+	width: 300px;
+	height: 300px;
+
+	background-color: rgba(0, 0, 0, 0.1);
+	border: 1px solid red;
 }
 .side--top {
-	transform: translateY(-100px) rotateX(90deg);
+	transform: translateY(-150px) rotateX(90deg);
+}
+.side--right {
+	transform: translateX(150px) rotateY(90deg);
 }
 .side--bottom {
-	transform: translateY(100px) rotateX(90deg);
+	transform: translateY(150px) rotateX(90deg);
+}
+.side--left {
+	transform: translateX(-150px) rotateY(90deg);
 }
 .side--front {
-	transform: translateZ(100px);
+	transform: translateZ(150px);
+}
+.side--back {
+	transform: translateZ(-150px);
 }
