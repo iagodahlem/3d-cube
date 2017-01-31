@@ -71,7 +71,7 @@
 		<h1 class="title">3D Cube</h1>
 	</header>
 	<div class="scene">
-		<div class="cube">
+		<div class="cube js-cube">
 			<div class="side side--back"></div>
 			<div class="side side--left"></div>
 			<div class="side side--right"></div>
@@ -99,34 +99,35 @@
 			};
 
 			const setAngles = (x, y) => {
-				cube.style.transform = `rotateX(${++x}deg) rotateY(${y})`;
-			}
+				cube.style.transform = `rotateX(${x}deg) rotateY(${y})`;
+				console.log(cube.style.transform);
+			};
 
 			const rotateUp = () => {
 				const degs = getAngle(cube);
-				const x = degs.x;
-				const y = degs.y;
+				let x = degs.x;
+				let y = degs.y;
 				setAngles(++x, y);
 			};
 
 			const rotateRight = () => {
 				const degs = getAngle(cube);
-				const x = degs.x;
-				const y = degs.y;
+				let x = degs.x;
+				let y = degs.y;
 				setAngles(x, ++y);
 			};
 
 			const rotateDown = () => {
 				const degs = getAngle(cube);
-				const x = degs.x;
-				const y = degs.y;
+				let x = degs.x;
+				let y = degs.y;
 				setAngles(--x, y);
 			};
 
 			const rotateLeft = () => {
 				const degs = getAngle(cube);
-				const x = degs.x;
-				const y = degs.y;
+				let x = degs.x;
+				let y = degs.y;
 				setAngles(x, --y);
 			};
 
@@ -143,13 +144,13 @@
 				const a = Math.round(Math.asin(-matrixVal10 / cosB) * 180 / pi);
 
 				return {
-					degX: a ? a : 0,
-					degY: b ? b : 0
+					x: a ? a : 0,
+					y: b ? b : 0
 				};
 			};
 
 			const keydownHandle = event => {
-				switch (event.keyCode) {
+				switch (event.which) {
 					case ARROW_KEYS.UP:
 						rotateUp();
 						break;
@@ -165,8 +166,7 @@
 				}
 			};
 
-			window.addEventListener('keydown', keydownHandle);
-
+			document.addEventListener('keydown', keydownHandle, false);
 		})(window, document);
 	</script>
 </body>
