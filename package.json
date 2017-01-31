@@ -5,7 +5,7 @@
     "live-server": "1.2.0"
   },
   "scripts": {
-    "start": "live-server --port=8080 --host=localhost --open=./index.html",
-    "build": "htmlmin --nojsmin -o index.html index.html"
+    "start": "live-server --port=8080 --host=localhost --open=./index.dev.html",
+    "build": "htmlmin --nojsmin -o index.html index.dev.html"
   }
 }
