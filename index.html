@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8" /><title>3D Cube</title><link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css" /><style>.cube,.scene,.side{width:300px;height:300px}*,::after,::before{box-sizing:border-box}body,html{margin:0;padding:0;font-family:Lato,sans-serif;font-weight:400}.title{text-align:center}.scene{margin:120px auto 0;perspective:1200px}.cube{position:relative;transform-style:preserve-3d;transform:rotateX(0) rotateY(0);transition:all .2s ease-in-out}.side{position:absolute;background-color:rgba(0,0,0,.1);border:1px solid red}.side--top{transform:translateY(-150px) rotateX(90deg)}.side--right{transform:translateX(150px) rotateY(90deg)}.side--bottom{transform:translateY(150px) rotateX(90deg)}.side--left{transform:translateX(-150px) rotateY(90deg)}.side--front{transform:translateZ(150px)}.side--back{transform:translateZ(-150px)}</style></head><body><header class="header"><h1 class="title">3D Cube</h1></header><div class="scene"><div class="cube"><div class="side side--back"></div><div class="side side--left"></div><div class="side side--right"></div><div class="side side--top"></div><div class="side side--bottom"></div><div class="side side--front"></div></div></div><footer class="footer"></footer><script>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8" /><title>3D Cube</title><link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css" /><style>.cube,.scene,.side{width:300px;height:300px}*,::after,::before{box-sizing:border-box}body,html{margin:0;padding:0;font-family:Lato,sans-serif;font-weight:400}.title{text-align:center}.scene{margin:120px auto 0;perspective:1200px}.cube{position:relative;transform-style:preserve-3d;transform:rotateX(0) rotateY(0);transition:all .2s ease-in-out}.side{position:absolute;background-color:rgba(0,0,0,.1);border:1px solid red}.side--top{transform:translateY(-150px) rotateX(90deg)}.side--right{transform:translateX(150px) rotateY(90deg)}.side--bottom{transform:translateY(150px) rotateX(90deg)}.side--left{transform:translateX(-150px) rotateY(90deg)}.side--front{transform:translateZ(150px)}.side--back{transform:translateZ(-150px)}</style></head><body><header class="header"><h1 class="title">3D Cube</h1></header><div class="scene"><div class="cube js-cube"><div class="side side--back"></div><div class="side side--left"></div><div class="side side--right"></div><div class="side side--top"></div><div class="side side--bottom"></div><div class="side side--front"></div></div></div><footer class="footer"></footer><script>
 		'use strict';
 
 		(function(window, document) {
@@ -13,34 +13,35 @@
 			};
 
 			const setAngles = (x, y) => {
-				cube.style.transform = `rotateX(${++x}deg) rotateY(${y})`;
-			}
+				cube.style.transform = `rotateX(${x}deg) rotateY(${y})`;
+				console.log(cube.style.transform);
+			};
 
 			const rotateUp = () => {
 				const degs = getAngle(cube);
-				const x = degs.x;
-				const y = degs.y;
+				let x = degs.x;
+				let y = degs.y;
 				setAngles(++x, y);
 			};
 
 			const rotateRight = () => {
 				const degs = getAngle(cube);
-				const x = degs.x;
-				const y = degs.y;
+				let x = degs.x;
+				let y = degs.y;
 				setAngles(x, ++y);
 			};
 
 			const rotateDown = () => {
 				const degs = getAngle(cube);
-				const x = degs.x;
-				const y = degs.y;
+				let x = degs.x;
+				let y = degs.y;
 				setAngles(--x, y);
 			};
 
 			const rotateLeft = () => {
 				const degs = getAngle(cube);
-				const x = degs.x;
-				const y = degs.y;
+				let x = degs.x;
+				let y = degs.y;
 				setAngles(x, --y);
 			};
 
@@ -57,13 +58,13 @@
 				const a = Math.round(Math.asin(-matrixVal10 / cosB) * 180 / pi);
 
 				return {
-					degX: a ? a : 0,
-					degY: b ? b : 0
+					x: a ? a : 0,
+					y: b ? b : 0
 				};
 			};
 
 			const keydownHandle = event => {
-				switch (event.keyCode) {
+				switch (event.which) {
 					case ARROW_KEYS.UP:
 						rotateUp();
 						break;
@@ -79,7 +80,6 @@
 				}
 			};
 
-			window.addEventListener('keydown', keydownHandle);
-
+			document.addEventListener('keydown', keydownHandle, false);
 		})(window, document);
 	</script></body></html>
