@@ -1,6 +1,6 @@
 # 3d-cube
 
-A experiment with 3D CSS.
+An experiment with 3D CSS.
 
 ## License
 
